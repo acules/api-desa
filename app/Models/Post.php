@@ -24,10 +24,12 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    /*
     protected function image(): Attribute
     {
         return Attribute::make(
             get: fn ($image) => url('/storage/posts/' . $image),
         );
     }
+    */
 }

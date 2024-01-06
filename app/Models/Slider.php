@@ -14,10 +14,12 @@ class Slider extends Model
         'image',
     ];
 
+    /*
     protected function image(): Attribute
     {
         return Attribute::make(
             get: fn ($image) => url('/storage/sliders/' . $image),
         );
     }
+    */
 }
