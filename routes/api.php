@@ -56,3 +56,22 @@ Route::prefix('admin')->group(function () {
         ->middleware('permission:aparaturs.index|aparaturs.store|aparaturs.update|aparaturs.delete');
     });
 });
+
+Route::prefix('website')->group(function () {
+    Route::get('/posts', [App\Http\Controllers\Api\Website\PostController::class, 'index']);
+    Route::get('/posts/{slug}', [App\Http\Controllers\Api\Website\PostController::class, 'show']);
+    Route::get('/posts_home', [App\Http\Controllers\Api\Website\PostController::class, 'homePage']);
+
+    Route::get('/products', [App\Http\Controllers\Api\Website\ProductController::class, 'index']);
+    Route::get('/products/{slug}', [App\Http\Controllers\Api\Website\ProductController::class, 'show']);
+    Route::get('/products_home', [App\Http\Controllers\Api\Website\ProductController::class, 'homePage']);
+
+    Route::get('/pages', [App\Http\Controllers\Api\Website\PageController::class, 'index']);
+    Route::get('/pages/{slug}', [App\Http\Controllers\Api\Website\PageController::class, 'show']);
+
+    Route::get('/aparaturs', [App\Http\Controllers\Api\Website\AparaturController::class, 'index']);
+
+    Route::get('/photos', [App\Http\Controllers\Api\Website\PhotoController::class, 'index']);
+    Route::get('/sliders', [App\Http\Controllers\Api\Website\SliderController::class, 'index']);
+
+});

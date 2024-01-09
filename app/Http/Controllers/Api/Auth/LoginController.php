@@ -11,13 +11,11 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
-        //set validasi
         $validator = Validator::make($request->all(), [
             'email'    => 'required|email',
             'password' => 'required',
         ]);
 
-        //response error validasi
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -28,14 +26,11 @@ class LoginController extends Controller
         //check jika "email" dan "password" tidak sesuai
         if (!$token = auth()->guard('api')->attempt($credentials)) {
 
-            //response login "failed"
             return response()->json([
                 'success' => false,
                 'message' => 'Email or Password is incorrect'
             ], 400);
         }
-
-        //response login "success" dengan generate "Token"
         return response()->json([
             'success'       => true,
             'user'          => auth()->guard('api')->user()->only(['name', 'email']),
